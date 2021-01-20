@@ -32,7 +32,7 @@ class RegistrationForm(FlaskForm):
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
-        # If email is exist,then then throw validation error
+        ## If email is exist,then then throw validation error
         if user:
             raise ValidationError('That email is taken. Please choose a different one.')
 

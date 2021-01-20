@@ -16,7 +16,7 @@ import random
 #df = df.drop(columns=['DEFECT_TYPE'])
 #df['DEFECT_TYPE'] = dfct
 #dfct = df['DEFECT_GROUP_ID']
-#df = df.drop(columns=['DEFECT_GROUP_ID'])
+##df = df.drop(columns=['DEFECT_GROUP_ID'])
 #df['DEFECT_GROUP_ID'] = dfct
 #recp = recipes.Material_Code.unique()
 recp=[112 ,113 ,115, 114, 117, 119, 121, 126, 124, 120, 116, 180, 166, 183 ,182 ,190, 181, 122 ,125, 118, 208, 209, 207, 210, 211, 215 ,212 ,214 ,213]

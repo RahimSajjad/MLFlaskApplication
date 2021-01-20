@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      <!--Customized css file name 'main.css'-->
+  
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/signin.css')}}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+
+
+      {% if title %}
+      
+          <title>DefFinder - {{ title }}</title>
+    
+      {% else %}
+        
+          <title>DefFinder</title>
+      
+      {% endif %}
+  
+  </head>
+
+<body class="h-100 d-inline-block  w-75  p-3" style="margin-top: -5rem;">
+
+    <header class="masthead" style="margin-bottom: 10rem;">
+        
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top " style="background-image: url({{ url_for('static', filename='img/Red-footer.png') }})">
+            
+            <div class="container">
+                <!--Name: nav bar brand using config.json file to set this name by render page with parameter _params=params['nav_name']-->
+                <a class="navbar-brand mr-4font-weight-bold text-warning" href="{{ url_for('dashboard') }}">{{_params['nav_name']}}</a>
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                
+                <span class="navbar-toggler-icon"></span>
+                
+                </button>
+                    
+                <div class="collapse navbar-collapse " id="navbarToggle">
+                    <div class="navbar-nav mr-auto " >
+                    
+                    </div>
+              
+                        <a class="nav-item nav-link font-weight-bold text-warning" href="{{ url_for('adminlogout') }}">Log out</a>
+                    
+                    </div>
+                
+                </div>
+            
+            </div>
+        
+        </nav>
+
+            <div style="margin-top: 12rem;margin-bottom: 200rem;">
+	           
+                <h4>Admin can manage all post:
+	                 
+                    <a class="text-dark font-weight-bold float-center" href="/edit/0" ><button class="btn btn-info ">Add New Post  </button></a></h4>
+
+
+<!--Search box with title-->
+                <div class=" float-right">
+                    
+                    <form action="/search" method="POST">
+                    
+                        <input type="text" autofocus="autofocus" name="search_string">
+        
+                        <input type="submit" action="/search" value="Search">
+        
+                    </form>  
+
+                  <br>
+                </div>
+
+            <h4 class="container text-warning text-center">{{legend}}</h4>
+                {% if post%}
+
+                {% endif%}
+<!--End Search-->
+
+  <table class="table table-striped">
+      <thead class= "thead-dark ">
+      
+          <tr>
+              <th scope="col">pid</th>
+              <th scope="col">Title</th>
+              <th scope="col">Slug</th>
+              <th scope="col">Content</th>
+              <th scope="col">date_posted</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+          </tr>
+      
+      </thead>
+  
+      <tbody>
+
+          {% for post in post %}
+  
+            <tr>    
+                <td>{{post.id}}</td>
+                <td>{{post.title}}</td>
+                <td>{{post.slug}}</td>
+                <td>{{post.content[0:15]}}</td>
+                <td>{{post.date_posted}}</td>
+                <td><a href="/edit/{{post.id}}"><button class="btn btn-warning">Edit</button></a></td>
+                <td><a href="/delete/{{post.id}}"><button class="btn btn-danger">Delete</button></a></td>
+            </tr>
+
+          {% endfor %}
+    
+      </tbody>
+  </table>
+
+<hr>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<style type="text/css">
+    .space { margin-bottom:2000px; }
+</style>
+<div class="space"></div>
+
+  
+<!--fffffffffffffffffffffffffffffffffffff End Footer fffffffffffffffffffffffffffffffffffffffffffffffffff-->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

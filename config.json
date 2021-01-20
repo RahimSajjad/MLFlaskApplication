@@ -1,0 +1,25 @@
+{
+  "params": {
+    "local_server": "True",
+    "local_uri":"mysql://root:@localhost/kitedatabase",
+    "prod_uri":"mysql://root:@localhost/kitedatabase",
+    "home_heading": "Predict materials defect type",
+    "about_heading": "Article",
+    "input_heat_id": "Input heat id: 1701194",
+    "Input_mat_code": "Input materials code--weight, use comma separator ',' for multiple: 119--4545.9,...",
+    "note": "Here! You can get predict a defect Id of the materials. This website is using the machine learning model to predict your given queries.",
+    "nav_name": "DefIdFinder",
+   
+    "error": "Invalid user name! Please try again.If you are new, Please register first.",
+    "predict_error": "Invalid input. Please input an integer or valid values!",
+    "no_of_post":3,
+    "company_name": "XYZ GmbH",
+    "com_address": "NRW Deutschland",
+    "copy_right": " 2020 Copyright by Rahim",
+    "admin_id": "ID:EX230",
+    "admin_user":"Rahim",
+    "admin_password": "Rahim12"
+
+  }
+
+}

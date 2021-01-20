@@ -1,0 +1,129 @@
+<!--Register and user login layout form-->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--Customized css file name 'main.css'-->  
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/signin.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+        {% if title %}
+        
+           <title>DefFinder - {{ title }}</title>
+    
+        {% else %}
+       
+            <title>DefFinder</title>
+    
+        {% endif %}
+
+</head>
+<body class="h-100 d-inline-block w-100 p-3" style="margin-top: -5rem;background-image: url({{ url_for('static', filename='img/coding4.png') }})" >
+    
+    <header class="site-header" style="margin-bottom: 10rem;">
+        
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top " style="background-image: url({{ url_for('static', filename='img/Header.png') }})">
+            
+            <div class="container">
+                <!--Name: nav bar brand using config.json file to set this name by render page with parameter _params=params['nav_name']-->
+                <a class="navbar-brand mr-4font-weight-bold text-warning" href="{{ url_for('login') }}">{{_params['nav_name']}}</a>
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                
+                </button>
+                    
+                <div class="collapse navbar-collapse " id="navbarToggle">
+                    
+                    <div class="navbar-nav mr-auto " >
+                    </div>
+                        <!-- Navbar Right Side for homw,About, Logout
+                        <div class="navbar-nav ">                           
+                    <a class="nav-item nav-link font-weight-bold text-warning" href="{{ url_for('home') }}">Home</a>
+                    <a class="nav-item nav-link font-weight-bold text-warning" href="{{ url_for('about') }}">About</a>-->
+                    <a class="nav-item nav-link font-weight-bold text-warning" href="{{ url_for('register') }}">Registration</a>
+
+                    <a class="nav-item nav-link font-weight-bold text-warning" href="{{ url_for('login') }}">Log in</a>
+                    
+                </div>
+                
+            </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <!--flashed messages show here, with_categories=true: allow the success messages-->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+           
+              <!--If any messages then show using for loop-->
+                {% if messages %}
+              
+                    {% for category, message in messages %}
+                      <!--if success messages then it will make a success alert -->
+                        <div class="alert alert-{{ category }}">
+                          
+                          {{ message }}
+                        
+                        </div>
+                      
+                    {% endfor %}
+              
+                {% endif %}
+         
+
+            {% endwith %}
+          
+
+
+                {% block content %}
+
+          <!--Here ! insert the body-->
+
+                {% endblock %}
+        </div>
+        
+      </div>
+    </main>
+
+<!-- Footer -->
+<!--ffffffffffffffffffffffffffffffffff Start Footer fffffffffffffffffffffffffffffffffffffffffff-->
+
+<footer class="page-footer font-small blue text-white bg-steel fixed-bottom " style="background-image: url({{ url_for('static', filename='img/Footer.png') }})">
+ 
+        <div class="container-fluid text-center text-md-left">
+            <!-- Grid row -->
+            <div class="row">
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-20 mt-4 ">
+                    <!-- Content -->
+                   <h6 class="font-weight-normal text-white text-left">{{_params['company_name']}}</h6>
+                   <p>Address: {{_params['com_address']}}</p>
+
+                </div>
+                <!-- Grid column -->
+            </div>       
+        </div>
+      <!-- Copyright -->
+
+        <div class="text-center text-dark" >
+            <p> ©{{_params['copy_right']}}</p>
+        </div>
+</footer>
+<!--fffffffffffffffffffffffffffffffffffff End Footer fffffffffffffffffffffffffffffffffffffffffffffffffff-->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

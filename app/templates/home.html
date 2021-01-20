@@ -1,0 +1,101 @@
+
+<!--This is home page-->
+
+<!--Inheritance templates using jinja header and footer come from layout.html template-->
+{% extends "layout.html"%}
+
+{% block content%}
+
+
+<!-- Call config.json params set to home header -->
+<div class="container">
+	
+	<div class="container w-100 p-3 rounded text-white text-center" style="background-image: url({{ url_for('static', filename='img/Header-orange.png') }})">
+		
+		<h4>{{_params['home_heading']}}</h4>
+			    
+	</div>
+			
+	<br>
+
+</div>
+
+<div class="container">
+ 
+		<!--form for data prediction
+			*Call predict method here after click submit button .
+			*used action="{{ url_for('predict')}}"  method="post"
+		-->
+	   <form  action="{{ url_for('predict')}}" method="post" >
+	  		
+	  		<!--Input box for heat_id , name="head_id"-->
+			<div class="container w-100 p-3 rounded " style="background-image: url({{ url_for('static', filename='img/Footer.png') }})">
+			  	
+			  	<p>{{_params['input_heat_id']}}</p>
+			    
+			    <input class="form-control d-flex p-2"  type="text" name="heat_id" placeholder="Heat id" required="required" />
+			
+			</div>
+			
+			<hr>
+
+
+			<!--Input box for mat_code , name="mat_code"-->
+			<div class="container w-100 p-3 rounded " style="background-image: url({{ url_for('static', filename='img/Footer.png') }})">
+			    
+			    <p>{{_params['Input_mat_code']}}</p>
+			    
+			    <input class="form-control d-flex p-2" type="text" name="mat_code" placeholder="Materials code--weight, use comma separator for multiple values." required="required" />
+			
+			</div>
+			
+			<hr>
+			
+			<!--button for submision to hit or help the -> predict method ,
+			 using ->form action="{{ url_for('predict')}}" method="post 
+			-->
+			<div class="container ">
+			    
+			    <button type="submit" class="btn btn-outline-success text-white font-weight-bold  float-left"  data-toggle="tooltip" data-placement="left" title=" Click for Prediction" >Prediction</button>
+			
+			</div>
+
+
+	    </form>
+	<br>
+	<br>
+
+		<!--Show the result by "if/else" if model has a prediction result 
+ 		(and if user inputed correct value in form) then the result show here!
+  		by "prediction_text" variable.
+		-->
+	{% if prediction_result %}
+				
+		<div class="container w-100 p-3 rounded text-white"  style="background-image: url({{ url_for('static', filename='img/Green-footer.png') }})">
+					
+			<p>Your heat id : {{ heatvalue }}</p>
+			<p>Your materials code with weight: {{ matweight}}</p>
+			<!--<p>Predicted group: {{predictgp}}</p>-->
+
+			<p>Defect type for the given input are : <strong class="font-weight-bold text-dark bg-warning"><h5 class="text-center ">{{ prediction_result }}</h5></strong></p>
+
+		</div>
+	{% endif %}
+
+	<!--Show "error", if user input unaccepted value like string then throw the Error message to the UI by "prediction_error"-->	
+	{% if prediction_error %}
+		<div class="container w-100 p-3 rounded text-white" style="background-image: url({{ url_for('static', filename='img/Red-footer.png') }})">
+			<p>Input heat id : {{ heatvalue }}</p>
+			<p>Input materials code with weight: {{ matweight}}</p>
+
+			<p class=error><strong class="text-danger">Error:</strong>  {{ prediction_error }}</p>
+			    
+		</div>
+	{% endif %}
+
+   	
+</div>
+
+{% endblock content %}
+
+

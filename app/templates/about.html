@@ -1,0 +1,146 @@
+<!-- About pasge-->
+
+<!--Inheritance templates using jinja header and footer come from layout.html template-->
+{% extends "layout.html"%}
+
+{% block content%}
+
+
+<!-- Call config.json params for setting  "About header" -->
+      <div class="container w-100 p-3 rounded text-white text-center" style="background-image: url({{ url_for('static', filename='img/Header-orange.png') }})">
+            <h4 class="text-white ">{{_params['about_heading']}}
+
+<!--About button search-->
+
+              <form action="" method="post" autocomplete="off"> 
+                    <div class="row">
+                        <div class="col-10 ">
+                            
+                            <input style=" background-color: rgba(0, 0, 0, 0);
+                            border:none;" type="text"  class="border-bottom border-warning form-control input-sm text-white" name="tag" id="tag"  placeholder="Search... " /> 
+                        
+                        </div>
+                        
+                        <div class="col-2" align="left">
+                        
+                            <input type="submit" value="Search" class="btn btn-outline-success btn float-right" name=""> 
+                        
+                        </div>
+              </form> 
+
+            </h4>
+      </div>
+   <!--End Search-->
+
+
+
+   <!--Here content are showed from database
+   --> 
+ 
+  {%- for post in post.items %}
+
+       
+  <hr>
+      <article class="media content-section container w-100 p-3 rounded text-white"  style="background-image: url({{ url_for('static', filename='img/Footer.png') }})">
+              <div> <br></div>
+                  <div class="media-body">
+                  
+                        <div class="article-metadata">
+                     
+                            <small class="text-muted"></small>
+        
+                        </div>
+
+                        <h4 class="article-title text-warning" ><a class="article-title text-warning" href="/post/{{post.slug}}">{{post.title}} </a> </h4>
+                        <small class="text-muted ">Post by Rahim on {{ post.date_posted.strftime('%Y-%m-%d') }} at {{post.date_posted.strftime('%H:%M')}}</small>
+                        <hr>
+                        <p class="article-content text-white">{{post.content[0:150]}} ... </p>
+                        <p class="article-content">{{post.slug}}</p>
+                  
+                  </div>
+    
+                  <div class="">
+                      <small class="text-muted">
+             
+                          <a class="ml-1 text-warning " href="/post/{{post.slug}}">see all</a>
+                      </small>
+                  </div>
+
+      </article>
+
+  {% endfor %}
+
+<!--This is for button next and previous<div class="clearfix">-->
+
+<nav aria-label="Page navigation example">
+    
+    <ul class="pagination float-right">
+                    
+        {% if post.has_prev %}
+            <li class="page-item "> 
+                
+                <a class="page-link" href="{{ url_for('about', page=post.prev_num) }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            
+            </li>
+        {% else %}
+            <li class="page-item">
+                <a class="page-link btn disabled" href="#">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+      
+        {% for page in post.iter_pages(left_edge=3, right_edge=3) %}
+            
+            {% if page %}
+      
+                {% if page==post.page %}
+                    <li class="page-item active">
+                        <a class="page-link" href="{{ url_for('about', page=page) }}">{{ page }}</a>
+                    </li>
+                {% else %}
+       
+                    <li class="page-item">
+                        <a class="page-link" href="{{ url_for('about', page=page) }}">{{ page }}</a>
+                    </li>
+                {% endif %}
+       
+            {% else %}
+
+                  <li class="page-item disabled" id="example_ellipsis">
+                  <a href="#" class="page-link">…</a>
+                  </li> 
+        
+            {% endif %}
+     
+        {% endfor %}
+ 
+                    
+        {% if post.has_next %}
+                  <li class="page-item">
+                      <a class="page-link" href="{{ url_for('about', page=post.next_num) }}"  aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                       </a>
+                  </li>
+        {% else %}
+                  
+                  <li class="page-item">
+                      <a class="page-link btn disabled" href="#">
+                          <span aria-hidden="true">&raquo;</span>
+                      </a>
+                  </li>
+        {% endif %}
+ 
+    </ul>
+</nav>
+
+
+
+
+
+
+{% endblock content %}
+
+

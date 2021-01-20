@@ -1,0 +1,31 @@
+<!--Account Page-->
+{% extends "layout.html" %}
+{% block content %}
+    <!--<h1>{{ current_user.username }}</h1>
+    <h1>{{ current_user.email }}</h1>
+	-->
+
+	<div class="container">
+ 
+		<div  class="container w-100 p-3 rounded text-white text-center" style="background-image: url({{ url_for('static', filename='img/Header-orange.png') }})">
+			<h3 class="text-white text-center">User Profile</h3>			
+		
+		</div>
+		
+		<hr>
+			<!--Show here User information user name ,id and user email-->
+		<div class="container w-100 p-3 rounded text-white" style="background-image: url({{ url_for('static', filename='img/Footer.png') }})">
+			
+			<h5>ID : {{ current_user.id }}</h5>
+			<h5>Account username : {{ current_user.username }}</h5>
+			<h5>Email : {{ current_user.email }}</h5>
+		
+		</div>			
+		
+		<hr>
+			   	
+	</div>
+
+
+
+{% endblock content %}

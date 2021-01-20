@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity=" sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="  sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        {% if title %}
+    
+            <title>DefFinder - {{ title }}</title>
+    
+        {% else %}
+        
+            <title>DefFinder</title>
+    
+        {% endif %}
+
+    </head>
+
+
+<body class="h-100 d-inline-block  w-75  p-3" style="margin-top: -5rem;">
+
+     <header class="masthead" style="margin-bottom: 5rem;">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top " style="background-image: url({{ url_for('static', filename='img/Red-footer.png') }})">
+            <div class="container">
+                <!--Name: nav bar brand using config.json file to set this name by render page with parameter _params=params['nav_name']-->
+                <a class="navbar-brand mr-4font-weight-bold text-warning" href="{{ url_for('login') }}">{{_params['nav_name']}}</a>
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle"        aria-expanded="false" aria-label="Toggle navigation">
+                    
+                    <span class="navbar-toggler-icon"></span>
+                
+                </button>
+                    
+                <div class="collapse navbar-collapse " id="navbarToggle">
+                    
+                    <div class="navbar-nav mr-auto " >
+                    
+                        </div>
+              
+                            <a class="nav-item nav-link font-weight-bold text-warning" href="{{ url_for('logout') }}">Log out</a>
+                    </div>
+                
+                </div>
+            </div>
+        </nav>
+
+
+
+  
+        <div style="margin-top: 0rem;margin-top: 10rem;">
+
+                <h4>Admin can add or Edit a post:</h4>
+
+
+
+        <form name="sentMessage" action="/edit/{{id}}" method="post"  style="margin-bottom: 5rem;">
+  
+                <div class="form-group">
+                        
+                        <label for="exampleFormControlInput1">Title</label>
+    
+                            <input type="text" name="title" class="form-control" id="title" placeholder="title" value="{{post.title}}" >
+                
+                </div>
+        
+                <div>
+        
+                    <label for="exampleFormControlInput1">Slug</label>
+                
+                    <input type="text" name ="slug"class="form-control" id="slug" placeholder="slug" value="{{post.slug}}">
+                </div>
+ 
+                <div class="form-group">
+                        
+                        <label for="exampleFormControlTextarea1">Content</label>
+                        <textarea class="form-control" id="content" type="text" name="content" rows="10" placeholder="Write post.." >{{post.content}}</textarea>
+                </div>
+
+
+                <div>
+    
+                    <button class="btn btn-lg btn-success " type="submit">Save</button>
+
+                </div>
+        </div>
+
+                <div>
+            
+                    <button class="btn btn-lg btn-info "><a class="text-dark font-weight-bold" href="/dashboard"> Take me back</a></button>
+        
+                </div>
+        </form>
+
+<!--fffffffffffffffffffffffffffffffffffff End Footer fffffffffffffffffffffffffffffffffffffffffffffffffff-->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

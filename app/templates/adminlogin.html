@@ -1,0 +1,111 @@
+<!--adminLogin Page-->
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+    
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+           <!--Page title show-->
+           {% if title %}
+                
+                <title>DefFinder - {{ title }}</title>
+            
+            {% else %}
+                
+                <title>DefFinder</title>
+            
+            {% endif %}
+    
+    
+             <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="  sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
+    
+            
+            <!--Coustomized css files(main.css, signin.css) -->
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/main.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/signin.css')}}">
+
+
+    </head>
+
+
+<body class="text-center">
+
+<!--Form for Admin login page-->
+    <form class="form-signin" action="/dashboard" method="post">
+  
+        <h1 class="h3 mb-3 font-weight-normal">Admin Login</h1>
+
+            <label for="uname" class="sr-only">Admin name</label>
+                <!--User name input. and user name is defined in config.json file-->
+                <input type="text" name="uname" id="uname" class="form-control" placeholder="User name" required autofocus>
+    
+
+            <label for="pass" class="sr-only">Password</label>
+                <!--User password input. and user password is defined in config.json file-->
+                <input type="password" name="pass" id="pass" class="form-control" placeholder="Password" required>
+    
+
+
+            <div class="checkbox mb-3">
+                <label>
+                    <!--Remember me check box: but did not make it functionally yet!!-->
+                    <input type="checkbox" name="remember-me" value="remember-me"> Remember me
+                </label>
+            </div>
+    
+            <!--Button for sign in: after click this button, call form action="/login" and this should be a post, method="post"-->
+            <button class="btn btn-lg btn-success btn-block" type="submit">Sign in</button>
+
+    
+            <!--Show error message, if user input invalid username or password-->
+            {% if _Error %}
+                <hr>
+
+                <p class=error><strong class="text-danger">Error:</strong> {{ _Error }}
+                
+                <hr>
+
+            {% endif %}
+
+    </form>
+  
+ <!-- Footer -->     
+<!-- Start Footer-->
+
+    <footer class="page-footer font-small blue pt-1 text-white bg-steel fixed-bottom">
+
+        <div class="container-fluid text-center text-md-left">
+
+          <!-- Grid row -->
+            <div class="row">
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-20 mt-4">
+                    <!-- all parameter call from config.json file render the login.html page with _params parameter -->
+                    <h5 class="font-weight-normal text-white">{{_params['company_name']}}</h5>
+                    <p>Address: {{_params['com_address']}}</p>
+                
+                </div>      
+            
+            </div>       
+        
+        </div>
+
+        <!-- Copyright name call from config.json file with _params perameter-->
+        <div class="text-center" >
+            
+            <p> ©{{_params['copy_right']}}</p>
+        
+        </div>
+
+    </footer>
+<!--End Footer-->
+
+</body>
+</html>
+
+

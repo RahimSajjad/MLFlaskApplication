@@ -1,0 +1,30 @@
+{% extends "layout.html"%}
+
+{% block content%}
+<!--
+<h5>Title : {{post.id}}</h5>
+<h5>Title : {{post.title}}</h5>
+<h5>Slug : {{post.slug}}</h5>
+<h5>Date : {{post.date_posted}}</h5>
+<h5>content : {{post.content}}</h5>
+-->
+<!--This is used for see all link depend on post slug-->
+
+<hr>
+ 	<article class="media content-section container w-100 p-3 rounded text-white"  style="background-image: url({{ url_for('static', filename='img/Footer.png') }})">
+ 			<div> <br></div>
+    			<div class="media-body">
+      				<div class="article-metadata">
+        					<small class="text-muted"></small>
+        
+      				</div>
+      				<h3 class="article-title text-warning"> Title : {{post.title}} </h3>
+      				<small class="text-muted text-white">Post by Rahim on {{ post.date_posted.strftime('%Y-%m-%d') }} at {{post.date_posted.strftime('%H:%M')}} </small>
+      				<hr>
+      				<p class="article-content text-white">{{post.content}}</p>
+    		   
+    		    </div>
+  	</article>
+
+
+{% endblock content %}

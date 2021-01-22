@@ -23,7 +23,8 @@ app.config['SECRET_KEY']='e6384f8e584848dde42c1ea66df065d0'
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://rahimsajjad@sqldatabaseforapp:dummy_PW.8642@sqldatabaseforapp.mysql.database.azure.com/mlprojectdb'
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://rahim@servernameishope:dummy_PW.8642@servernameishope.mysql.database.azure.com/mluserpost'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://rahim@rahimsajjad:dummy_PW.8642@rahimsajjad.mysql.database.azure.com/mlprojectbd'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://rahim@rahimsajjad:dummy_PW.8642@rahimsajjad.mysql.database.azure.com/mlprojectbd'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://rahimsajjad@rahimsajjad12:dummy_PW.8642@rahimsajjad12.mysql.database.azure.com/mlprojectbd'
 
 
 ###Create SQLALCHEMY database instance

@@ -35,3 +35,5 @@ mysql-connector-python == 8.0.22
 Flask-Script == 2.0.6
 install-jdk == 0.3.0
 scikit-multilearn == 0.2.0
+flask-filealchemy == 0.6.1
+pysqlite3 == 0.4.5

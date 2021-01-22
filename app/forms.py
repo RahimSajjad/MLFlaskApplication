@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationE
 from app.modelsdb import User
 
 
-# Registration form######################
+## Registration form######################
 class RegistrationForm(FlaskForm):
     # User name: name of the field:StringField(),check validation:validators()
     username = StringField('Username',
